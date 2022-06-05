@@ -9,30 +9,85 @@
 </head>
 <body>
 <img src="https://m.marine.gov.mo/displayinfo/dataCamLink.aspx?foldername=PI-02" id="img1">
+<canvas id="canvas"></canvas>
 </body>
 <script>
 async function start() {
   model = await tf.loadLayersModel('model/model.json')
-  predict()
+  // predict()
+  var img1 = document.getElementById("img1");
+  const t = tf.browser.fromPixels(img1, 3)
+  t.print()
+  const x = tf.expandDims(t)
+  const normalized = tf.image.resizeBilinear(x, [180, 180]).toFloat().div(tf.scalar(255))
+  console.log(normalized.shape)
+  const pred = model.predict(normalized).dataSync()
+  console.log(pred)
 }
 
-function predict()
-{
-  var img = new Image();
+// function predict()
+// {
+//   img.onload = () => {
+//     const t = tf.browser.fromPixels(img, 3)
+//     t.print()
+//     const x = tf.expandDims(t)
+//     const normalized = tf.image.resizeBilinear(x, [180, 180]).toFloat().div(tf.scalar(255))
+//     console.log(normalized.shape)
+//     const pred = model.predict(normalized).dataSync()
+//     console.log(pred)
+//   }
+// }
 
-  img.onload = () => {
-    const t = tf.browser.fromPixels(img, 3)
-    t.print()
-    const x = tf.expandDims(t)
-    const normalized = tf.image.resizeBilinear(x, [180, 180]).toFloat().div(tf.scalar(255))
-    console.log(normalized.shape)
-    const pred = model.predict(normalized).dataSync()
-    console.log(pred)
+// start()
+
+// const canvas = document.getElementById('canvas');
+// const ctx = canvas.getContext('2d');
+// var img = new Image();
+// img.crossOrigin = "Anonymous";
+// img.src = "https://m.marine.gov.mo/displayinfo/dataCamLink.aspx?foldername=PI-02";
+// img.onload = function() {
+//   console.log('v1');
+//   parseImage(img);
+// };
+
+// console.log('parseing')
+// parseImage(document.getElementById("img1"));
+
+async function parseImage(img) {
+  model = await tf.loadLayersModel('model/model.json')
+  // predict()
+  const t = tf.browser.fromPixels(img, 3)
+  t.print()
+  const x = tf.expandDims(t)
+  const normalized = tf.image.resizeBilinear(x, [180, 180]).toFloat().div(tf.scalar(255))
+  console.log(normalized.shape)
+  const pred = model.predict(normalized).dataSync()
+  console.log(pred)
+}
+
+console.log('hello');
+var img = new Image();
+img.crossOrigin = "Anonymous";   // COMMENT OUT TO SEE IT FAIL
+img.onload = uploadTex;
+img.src = "https://m.marine.gov.mo/displayinfo/dataCamLink.aspx?foldername=PI-02";
+
+function uploadTex() {
+  var gl = document.createElement("canvas").getContext("webgl");
+  var tex = gl.createTexture();
+  gl.bindTexture(gl.TEXTURE_2D, tex);
+  try {
+    gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, img);
+    log("DONE: ", gl.getError());
+  } catch (e) {
+    log("FAILED to use image because of security:", e);
   }
-  img.crossOrigin = "anonymous";
-  img.src = 'https://m.marine.gov.mo/displayinfo/dataCamLink.aspx?foldername=PI-02';
 }
 
-start()
+function log() {
+  var div = document.createElement("div");
+  div.innerHTML = Array.prototype.join.call(arguments, " ");
+  document.body.appendChild(div);
+}
+
 </script>
 </html>
