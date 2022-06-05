@@ -1,0 +1,33 @@
+<html>
+<body>
+Load external CORS image into the canvas below:<br>
+<canvas id="c"></canvas><br>
+Convert canvas to DataUri then set as source of the image below:<br>
+<img id="img" /> <br>
+<div id="results"></div>
+<script>
+  var c = document.getElementById('c');
+  var ctx = c.getContext('2d');
+  var img = new Image();
+  img.crossOrigin = '';
+  img.src = "https://graph.facebook.com/zuck/picture?type=large";
+  img.onload = function () {
+    var img = this;
+    try {
+      var start = new Date().getTime();
+      c.width = img.width;
+      c.height = img.height;
+      ctx.drawImage(img, 0, 0, img.width, img.height);
+      var dataUri = c.toDataURL();
+      document.getElementById('img').src = dataUri;
+      document.getElementById("results").innerHTML = "<span style='color:Green;'>" +
+      "Success: Your browser supports CORS for cross domain images in Canvas with DataUri:<br>" +
+      "<input value='" + dataUri + "' style='width:100%'/'>" +
+      "</span>";
+    } catch (ex) {
+      document.getElementById("results").innerHTML = "<span style='color:Red;'>Failed: " + ex + "</span>";
+    }
+  }
+</script>
+</body>
+</html>
