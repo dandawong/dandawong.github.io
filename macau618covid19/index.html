@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <title>澳門疫情資訊</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<style>
+  .active {
+    background: #4fdc6e;
+    color: #000;
+  }
+</style>
+
+<body>
+  <nav class="navbar navbar-expand-lg bg-light">
+    <div class="container-fluid">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a id='link_a' class="nav-link active" aria-current="page" href="#" onclick="go('link_a', 'map.html')">&nbsp;非官方疫情地圖&nbsp;</a>
+          </li>
+          <li class="nav-item">
+            <a id='link_b' class="nav-link" href="#" onclick="go('link_b', 'stat_1.html')">&nbsp;核酸檢測陽性統計&nbsp;</a>
+          </li>
+          <li class="nav-item">
+            <a id='link_c' class="nav-link" href="#" onclick="go('link_c', 'stat_2.html')">&nbsp;確診人士地區分佈&nbsp;</a>
+          </li>
+          <li class="nav-item">
+            <a id='link_d' class="nav-link" href="#" onclick="go('link_d', 'stat_3.html')">&nbsp;確診人士年齡分佈&nbsp;</a>
+          </li>
+          <li class="nav-item">
+            <a id='link_e' class="nav-link" href="#" onclick="go('link_e', 'stat_4.html')">&nbsp;確診人士住所分佈&nbsp;</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="d-flex flex-column flex-fill">
+    <iframe id="id_content" style="height:95vh;position: relative;" class="embed-responsive-item" src="map.html"
+      allowfullscreen></iframe>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous">
+  </script>
+</body>
+<script>
+function go(link, url) {
+  document.getElementById('id_content').src = url;
+  document.getElementById("link_a").classList.remove("active");
+  document.getElementById("link_b").classList.remove("active");
+  document.getElementById("link_c").classList.remove("active");
+  document.getElementById("link_d").classList.remove("active");
+  document.getElementById("link_e").classList.remove("active");
+  document.getElementById(link).classList.add("active");
+}
+</script>
+</html>
