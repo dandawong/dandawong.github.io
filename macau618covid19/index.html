@@ -15,6 +15,10 @@
     background: #4fdc6e;
     color: #000;
   }
+  .height-full {
+    height:calc(100vh - 60px);
+  }
+  html,body,.full-height { height: 100vh; }
 </style>
 
 <body>
@@ -27,7 +31,8 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a id='link_a' class="nav-link active" aria-current="page" href="#" onclick="go('link_a', 'map_1.html')">&nbsp;非官方疫情地圖&nbsp;</a>
+            <a id='link_a' class="nav-link active" aria-current="page" href="#"
+              onclick="go('link_a', 'map_1.html')">&nbsp;非官方疫情地圖&nbsp;</a>
           </li>
           <li class="nav-item">
             <a id='link_b' class="nav-link" href="#" onclick="go('link_b', 'stat_1.html')">&nbsp;核酸檢測陽性統計&nbsp;</a>
@@ -45,8 +50,8 @@
       </div>
     </div>
   </nav>
-  <div class="d-flex flex-column flex-fill">
-    <iframe id="id_content" style="height:95vh;position: relative;" class="embed-responsive-item" src="map_1.html"
+  <div class="d-flex flex-column flex-fill height-full">
+    <iframe id="id_content" style="height:100%;position: relative;" class="embed-responsive-item" src="map_1.html"
       allowfullscreen></iframe>
   </div>
 
@@ -55,14 +60,15 @@
   </script>
 </body>
 <script>
-function go(link, url) {
-  document.getElementById('id_content').src = url;
-  document.getElementById("link_a").classList.remove("active");
-  document.getElementById("link_b").classList.remove("active");
-  document.getElementById("link_c").classList.remove("active");
-  document.getElementById("link_d").classList.remove("active");
-  document.getElementById("link_e").classList.remove("active");
-  document.getElementById(link).classList.add("active");
-}
+  function go(link, url) {
+    document.getElementById('id_content').src = url;
+    document.getElementById("link_a").classList.remove("active");
+    document.getElementById("link_b").classList.remove("active");
+    document.getElementById("link_c").classList.remove("active");
+    document.getElementById("link_d").classList.remove("active");
+    document.getElementById("link_e").classList.remove("active");
+    document.getElementById(link).classList.add("active");
+  }
 </script>
+
 </html>
