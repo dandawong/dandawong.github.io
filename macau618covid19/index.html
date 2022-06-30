@@ -15,11 +15,15 @@
     background: #4fdc6e;
     color: #000;
   }
+
   .height-full {
-    height:calc(100vh - 60px);
+    height: calc(100vh - 50px);
     margin-top: 50px;
   }
-  html,body,.full-height { height: 100vh; }
+
+  body {
+    overflow-y: hidden;
+  }
 </style>
 
 <body>
@@ -70,6 +74,15 @@
     document.getElementById("link_e").classList.remove("active");
     document.getElementById(link).classList.add("active");
   }
+
+  const navLinks = document.querySelectorAll('.nav-item')
+  const menuToggle = document.getElementById('navbarSupportedContent')
+  const bsCollapse = new bootstrap.Collapse(menuToggle)
+  navLinks.forEach((l) => {
+    l.addEventListener('click', () => {
+      bsCollapse.toggle()
+    })
+  })
 </script>
 
 </html>
