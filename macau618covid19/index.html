@@ -36,20 +36,24 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a id='link_a' class="nav-link active" aria-current="page" href="#"
-              onclick="go('link_a', 'map_1.html')">&nbsp;非官方疫情地圖&nbsp;</a>
+            <a id='link_a' class="nav-link active" href="#link_a" class="visible-xs" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
+            onclick="go('link_a', 'map_1.html')">&nbsp;非官方疫情地圖&nbsp;</a>
           </li>
           <li class="nav-item">
-            <a id='link_b' class="nav-link" href="#" onclick="go('link_b', 'stat_1.html')">&nbsp;核酸檢測陽性統計&nbsp;</a>
+            <a id='link_b' class="nav-link" href="#link_b" class="visible-xs" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" 
+            onclick="go('link_b', 'stat_1.html')">&nbsp;核酸檢測陽性統計&nbsp;</a>
           </li>
           <li class="nav-item">
-            <a id='link_c' class="nav-link" href="#" onclick="go('link_c', 'stat_2.html')">&nbsp;確診人士地區分佈&nbsp;</a>
+            <a id='link_c' class="nav-link" href="#link_c" class="visible-xs" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
+            onclick="go('link_c', 'stat_2.html')">&nbsp;確診人士地區分佈&nbsp;</a>
           </li>
           <li class="nav-item">
-            <a id='link_d' class="nav-link" href="#" onclick="go('link_d', 'stat_3.html')">&nbsp;確診人士年齡分佈&nbsp;</a>
+            <a id='link_d' class="nav-link" href="#link_d" class="visible-xs" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
+            onclick="go('link_d', 'stat_3.html')">&nbsp;確診人士年齡分佈&nbsp;</a>
           </li>
           <li class="nav-item">
-            <a id='link_e' class="nav-link" href="#" onclick="go('link_e', 'stat_4.html')">&nbsp;確診人士住所分佈&nbsp;</a>
+            <a id='link_e' class="nav-link" href="#link_e" class="visible-xs" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
+            onclick="go('link_e', 'stat_4.html')">&nbsp;確診人士住所分佈&nbsp;</a>
           </li>
         </ul>
       </div>
@@ -75,14 +79,14 @@
     document.getElementById(link).classList.add("active");
   }
 
-  const navLinks = document.querySelectorAll('.nav-item')
-  const menuToggle = document.getElementById('navbarSupportedContent')
-  const bsCollapse = new bootstrap.Collapse(menuToggle)
-  navLinks.forEach((l) => {
-    l.addEventListener('click', () => {
-      bsCollapse.toggle()
-    })
-  })
+  // const navLinks = document.querySelectorAll('.nav-item')
+  // const menuToggle = document.getElementById('navbarSupportedContent')
+  // const bsCollapse = new bootstrap.Collapse(menuToggle)
+  // navLinks.forEach((l) => {
+  //   l.addEventListener('click', () => {
+  //     bsCollapse.toggle()
+  //   })
+  // })
 </script>
 
 </html>
