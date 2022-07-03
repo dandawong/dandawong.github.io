@@ -24,46 +24,71 @@
   body {
     overflow-y: hidden;
   }
+
+  html,
+  body {
+    height: 100%;
+    margin: 0;
+  }
+
+  .box {
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+  }
+
+  .box .row {
+    border: 1px dotted grey;
+  }
+
+  .box .row.header {
+    flex: 0 1 auto;
+  }
+
+  .box .row.content {
+    flex: 1 1 auto;
+  }
 </style>
 
 <body>
-  <nav class="navbar fixed-top navbar-expand-lg bg-light">
-    <div class="container-fluid">
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a id='link_a' class="nav-link active" href="#link_a" class="visible-xs" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
-            onclick="go('link_a', 'map_1.html')">&nbsp;非官方疫情地圖&nbsp;</a>
-          </li>
-          <li class="nav-item">
-            <a id='link_b' class="nav-link" href="#link_b" class="visible-xs" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" 
-            onclick="go('link_b', 'stat_1.html')">&nbsp;核酸檢測陽性統計&nbsp;</a>
-          </li>
-          <li class="nav-item">
-            <a id='link_c' class="nav-link" href="#link_c" class="visible-xs" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
-            onclick="go('link_c', 'stat_2.html')">&nbsp;確診人士地區分佈&nbsp;</a>
-          </li>
-          <li class="nav-item">
-            <a id='link_d' class="nav-link" href="#link_d" class="visible-xs" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
-            onclick="go('link_d', 'stat_3.html')">&nbsp;確診人士年齡分佈&nbsp;</a>
-          </li>
-          <li class="nav-item">
-            <a id='link_e' class="nav-link" href="#link_e" class="visible-xs" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
-            onclick="go('link_e', 'stat_4.html')">&nbsp;確診人士住所分佈&nbsp;</a>
-          </li>
-        </ul>
+  <div class="box">
+    <nav class="navbar fixed-top navbar-expand-lg bg-light row header">
+      <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a id='link_a' class="nav-link active" href="#link_a" class="visible-xs" data-bs-toggle="collapse"
+                data-bs-target=".navbar-collapse" onclick="go('link_a', 'map_1.html')">&nbsp;非官方疫情地圖&nbsp;</a>
+            </li>
+            <li class="nav-item">
+              <a id='link_b' class="nav-link" href="#link_b" class="visible-xs" data-bs-toggle="collapse"
+                data-bs-target=".navbar-collapse" onclick="go('link_b', 'stat_1.html')">&nbsp;核酸檢測陽性統計&nbsp;</a>
+            </li>
+            <li class="nav-item">
+              <a id='link_c' class="nav-link" href="#link_c" class="visible-xs" data-bs-toggle="collapse"
+                data-bs-target=".navbar-collapse" onclick="go('link_c', 'stat_2.html')">&nbsp;確診人士地區分佈&nbsp;</a>
+            </li>
+            <li class="nav-item">
+              <a id='link_d' class="nav-link" href="#link_d" class="visible-xs" data-bs-toggle="collapse"
+                data-bs-target=".navbar-collapse" onclick="go('link_d', 'stat_3.html')">&nbsp;確診人士年齡分佈&nbsp;</a>
+            </li>
+            <li class="nav-item">
+              <a id='link_e' class="nav-link" href="#link_e" class="visible-xs" data-bs-toggle="collapse"
+                data-bs-target=".navbar-collapse" onclick="go('link_e', 'stat_4.html')">&nbsp;確診人士住所分佈&nbsp;</a>
+            </li>
+          </ul>
+        </div>
       </div>
+    </nav>
+    <div class="row content">
+      <iframe id="id_content" style="height:100%; padding-top:50px; position: relative;" class="embed-responsive-item" src="map_1.html"
+        allowfullscreen></iframe>
     </div>
-  </nav>
-  <div class="d-flex flex-column flex-fill height-full">
-    <iframe id="id_content" style="height:100%;position: relative;" class="embed-responsive-item" src="map_1.html"
-      allowfullscreen></iframe>
   </div>
-
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous">
   </script>
